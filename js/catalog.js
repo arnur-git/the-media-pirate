@@ -1,4 +1,4 @@
-import anilibria from './adapters/anilibria.js';
+import anilibria,{getCachedItem} from './adapters/anilibria.js';
 export const adapters={hdrezka:(await import('./adapters/hdrezka.js')).default,lostfilm:(await import('./adapters/lostfilm.js')).default,filmix:(await import('./adapters/filmix.js')).default,anilibria};
 export const seed=[
 {id:'demo:dune2',title:'Дюна: Часть вторая',year:2024,rating:'8.5',kind:'movie',poster:'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg',backdrop:'https://image.tmdb.org/t/p/original/8b8R8l88Qje9dn9OE8PY05NggjN.jpg',synopsis:'Пол Атрейдес объединяется с Чани и фременами, стремясь отомстить заговорщикам, уничтожившим его семью. Перед ним встаёт выбор между любовью и судьбой известной вселенной.',adapter:'hdrezka'},
@@ -13,4 +13,4 @@ export const seed=[
 {id:'demo:batman',title:'Бэтмен',year:2022,rating:'7.8',kind:'movie',poster:'https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg',synopsis:'Молодой Брюс Уэйн расследует коррупцию в Готэме и выходит на след загадочного убийцы.',adapter:'hdrezka'},
 {id:'demo:bear',title:'Медведь',year:2022,rating:'8.5',kind:'series',poster:'https://image.tmdb.org/t/p/w500/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg',synopsis:'Молодой шеф-повар возвращается в Чикаго, чтобы управлять семейной закусочной.',adapter:'lostfilm'},
 {id:'demo:spyfamily',title:'Семья шпиона',year:2022,rating:'8.2',kind:'anime',poster:'https://image.tmdb.org/t/p/w500/3r4LYFuXrg3G8fepysr4xSLWnQL.jpg',synopsis:'Шпион, убийца и телепат создают фиктивную семью ради секретной миссии.',adapter:'anilibria'}];
-export function findItem(id){return seed.find(x=>x.id===id)||null}
+export function findItem(id){return seed.find(x=>x.id===id)||getCachedItem(id)}
